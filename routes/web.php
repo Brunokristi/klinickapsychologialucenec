@@ -10,8 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $serviceNames = Service::pluck('name');
-    return view('dashboard', compact('serviceNames'));
+    return view('dashboard', ['serviceNames' => Service::getAllNames()]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

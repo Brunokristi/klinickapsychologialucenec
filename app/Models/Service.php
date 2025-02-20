@@ -9,4 +9,8 @@ class Service extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'description', 'icon'];
+
+    public static function getAllNames(): array {
+        return self::pluck('name')->toArray();
+    }
 }
