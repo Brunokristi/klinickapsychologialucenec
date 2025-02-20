@@ -17,11 +17,11 @@
                         </tr> -->
                     </thead>
                     <tbody>
-                        @foreach($serviceNames as $serviceName)
-                            <tr>
-                                
+                        @foreach($services as $service)
+                            <tr>  
                                 <td> 
-                                    <a href="">{{ $serviceName }}</a>
+                                    {{ $service["id"] }}
+                                    <a href="/edit/id={{ $service['id'] }}">{{ $service['name'] }}</a>
                                     <hr>
                                 </td>
                             </tr>

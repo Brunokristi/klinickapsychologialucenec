@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'icon'];
+    protected $fillable = ['id', 'name', 'description', 'icon'];
 
     public static function getAllNames(): array {
-        return self::pluck('name')->toArray();
+        return self::select('id', 'name')->get()->toArray();
     }
 }
