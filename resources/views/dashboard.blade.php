@@ -21,7 +21,7 @@
                             <tr>  
                                 <td> 
                                     {{ $service["id"] }}
-                                    <a href="/edit/id={{ $service['id'] }}">{{ $service['name'] }}</a>
+                                    <a href="{{ route('service.edit', ['id' => $service['id']]) }}">{{ $service['name'] }}</a>
                                     <hr>
                                 </td>
                             </tr>
