@@ -102,7 +102,8 @@ class ServiceController extends Controller
     public function serviceTemplate (Request $request) {
         return view('services.create');
     }
-    public function create(Request $request) {
+
+    public function create (Request $request) {
         // Validation of the request
         $request->validate([
             'name' => 'required|string|max:255',
@@ -165,4 +166,19 @@ class ServiceController extends Controller
     
         return redirect()->route('dashboard')->with('success', 'Service created successfully');
     }
+
+    public function delete(Request $request, $id) {
+        $service = Service::findOrFail($id);
+        
+        $folderPath = sanitizeFileName($service->name);
+        Storage::disk('public')->deleteDirectory($folderPath);
+
+        $service->tags()->delete();
+        $service->steps()->delete();
+        $service->files()->delete();
+        $service->delete();
+    
+        return redirect()->route('dashboard')->with('success', 'Service deleted successfully');
+    }
+    
 }

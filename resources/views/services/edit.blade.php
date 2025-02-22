@@ -63,9 +63,11 @@
         <input type="file" name="new_files[]" multiple accept=".pdf,.doc,.docx">
         <button type="submit">Save</button>
         <br>
-        <button type="submit">Delete</button>
-        <br>
         <button type="button" onclick="window.location='{{ route('dashboard') }}'">Back</button>
+    </form>
+    <form action="{{ route('service.delete', ['id' => $service->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this service?');">
+            @csrf
+            <button type="submit">Delete Service</button>
     </form>
 </body>
 </html>
