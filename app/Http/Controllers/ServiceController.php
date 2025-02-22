@@ -60,8 +60,8 @@ class ServiceController extends Controller
         }
 
         //rename or create a directory for files
-        $old_name = sanitizeFileName($old_name);
-        $new_name = sanitizeFileName($request->input('name'));
+        $old_name = sanitizeFileName($old_name, $id);
+        $new_name = sanitizeFileName($request->input('name'), $id);
         
         if (Storage::disk('public')->exists($old_name)) {
             if ($old_name != $new_name){    
@@ -77,7 +77,7 @@ class ServiceController extends Controller
         if ($request->has('delete_files')) {
             foreach ($request->input('delete_files') as $fileId) {
                 $file = FileModel::findOrFail($fileId);
-                $filePath = $new_name.'/'.sanitizeFileName($file->path);
+                $filePath = $new_name.'/'.sanitizeFileName($file->path, $id);
                 if (Storage::disk('public')->exists($filePath)) {
                     Storage::disk('public')->delete($filePath);
                 }
@@ -89,7 +89,7 @@ class ServiceController extends Controller
         // Adding new files
         if ($request->hasFile('new_files')) {
             foreach ($request->file('new_files') as $uploadedFile) {
-                $path = $uploadedFile->storeAs($new_name, sanitizeFileName(($uploadedFile->getClientOriginalName())), 'public');
+                $path = $uploadedFile->storeAs($new_name, sanitizeFileName(($uploadedFile->getClientOriginalName()), $id), 'public');
                 $service->files()->create([
                     'path' => $uploadedFile->getClientOriginalName()
                 ]);
@@ -147,7 +147,7 @@ class ServiceController extends Controller
 
 
         
-        $new_name = sanitizeFileName($request->input('name'));
+        $new_name = sanitizeFileName($request->input('name'), $service->id);
 
         if (!Storage::disk('public')->exists($new_name)) {
             Storage::disk('public')->makeDirectory($new_name);
@@ -156,7 +156,7 @@ class ServiceController extends Controller
         // Adding files
         if ($request->hasFile('new_files')) {
             foreach ($request->file('new_files') as $uploadedFile) {
-                $path = $uploadedFile->storeAs($new_name, sanitizeFileName(($uploadedFile->getClientOriginalName())), 'public');
+                $path = $uploadedFile->storeAs($new_name, sanitizeFileName(($uploadedFile->getClientOriginalName()), $service->id), 'public');
                 $service->files()->create([
                     'service_id' => $service->id,
                     'path' => $uploadedFile->getClientOriginalName()
@@ -170,7 +170,7 @@ class ServiceController extends Controller
     public function delete(Request $request, $id) {
         $service = Service::findOrFail($id);
         
-        $folderPath = sanitizeFileName($service->name);
+        $folderPath = sanitizeFileName($service->name, $id);
         Storage::disk('public')->deleteDirectory($folderPath);
 
         $service->tags()->delete();
