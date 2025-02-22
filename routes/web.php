@@ -17,6 +17,9 @@ Route::get('/dashboard', function () {
 Route::get('/edit/id/{id}', [ServiceController::class, 'edit'])->middleware(['auth', 'verified'])->name('service.edit');
 Route::put('/edit/id/{id}', [ServiceController::class, 'update'])->middleware(['auth', 'verified'])->name('service.update');
 
+Route::get('/create/service', [ServiceController::class, 'serviceTemplate'])->middleware(['auth', 'verified'])->name('service.serviceTemplate');
+Route::post('/create/service', [ServiceController::class, 'create'])->middleware(['auth', 'verified'])->name('service.create');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

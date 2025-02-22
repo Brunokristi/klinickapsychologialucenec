@@ -1,12 +1,13 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Tag;
+use App\Models\Step;
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\File;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
 use App\Models\File as FileModel;
 
 class ServiceController extends Controller
@@ -98,7 +99,70 @@ class ServiceController extends Controller
         return redirect()->route('dashboard')->with('success', 'Service updated successfully');
     }
 
-    // public function create (Request $request, $id) {
+    public function serviceTemplate (Request $request) {
+        return view('services.create');
+    }
+    public function create(Request $request) {
+        // Validation of the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'icon' => 'nullable|string',
+            'tags' => 'nullable|array',
+            'steps' => 'nullable|array',
+            'new_files.*' => 'nullable|file|mimes:pdf,doc,docx|max:2048'
+        ]);
 
-    // }
+        // Create a new service
+        $service = Service::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'icon' => $request->input('icon')
+        ]);
+
+        // Adding tags
+        if ($request->has('tags')) {
+            foreach ($request->input('tags') as $tagName) {
+                if (!empty($tagName)) {
+                    $tag = Tag::firstOrCreate(
+                        ['name' => $tagName, 'service_id' => $service->id] // Включаємо service_id
+                    );
+                }
+            }
+        }
+
+        // Adding steps
+        if ($request->has('steps')) {
+            foreach ($request->input('steps') as $index => $stepText) {
+                if (!empty($stepText)) {
+                    Step::create([
+                        'service_id' => $service->id,
+                        'number' => $index + 1,
+                        'text' => $stepText
+                    ]);
+                }
+            }
+        }
+
+
+        
+        $new_name = sanitizeFileName($request->input('name'));
+
+        if (!Storage::disk('public')->exists($new_name)) {
+            Storage::disk('public')->makeDirectory($new_name);
+        }
+
+        // Adding files
+        if ($request->hasFile('new_files')) {
+            foreach ($request->file('new_files') as $uploadedFile) {
+                $path = $uploadedFile->storeAs($new_name, sanitizeFileName(($uploadedFile->getClientOriginalName())), 'public');
+                $service->files()->create([
+                    'service_id' => $service->id,
+                    'path' => $uploadedFile->getClientOriginalName()
+                ]);
+            }
+        }
+    
+        return redirect()->route('dashboard')->with('success', 'Service created successfully');
+    }
 }

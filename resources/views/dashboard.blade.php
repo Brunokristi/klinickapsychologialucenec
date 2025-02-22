@@ -17,6 +17,9 @@
                         </tr> -->
                     </thead>
                     <tbody>
+                    <a href="/create/service">Create service -></a>
+                    <br>
+                    <br>
                         @foreach($services as $service)
                             <tr>  
                                 <td> 
