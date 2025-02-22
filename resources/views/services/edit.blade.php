@@ -52,7 +52,7 @@
             @foreach($service->files as $file)
                 <li>
                     <input type="checkbox" name="delete_files[]" value="{{ $file->id }}"> Delete    
-                    <a href="{{ asset('storage/' . sanitizeFileName($service->name, $service->id) . '/' . sanitizeFileName($file->path, $service->id)) }}" target="_blank">
+                    <a href="{{ asset('storage/' . sanitizeFileName($service->name, $service->id) . '/' . sanitizeFileName($file->path)) }}" target="_blank">
                         {{ $file->path }}
                     </a>
                 </li>

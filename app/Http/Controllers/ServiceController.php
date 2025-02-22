@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Models\Tag;
 use App\Models\Step;
 use Illuminate\Support\Facades\Storage;
-
 use Illuminate\Support\Facades\File;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -19,15 +20,10 @@ class ServiceController extends Controller
     }
 
     public function update(Request $request, $id) {
-        // dd($request);
         $service = Service::findOrFail($id);
 
         $old_name = $service->name;
-        // $request->input('name');
-        // dd($old_name, $request->input('name'));
 
-        // dd($request->input('steps'));
-        // Оновлення основних полів
         $service->update([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
@@ -77,7 +73,7 @@ class ServiceController extends Controller
         if ($request->has('delete_files')) {
             foreach ($request->input('delete_files') as $fileId) {
                 $file = FileModel::findOrFail($fileId);
-                $filePath = $new_name.'/'.sanitizeFileName($file->path, $id);
+                $filePath = $new_name.'/'.sanitizeFileName($file->path);
                 if (Storage::disk('public')->exists($filePath)) {
                     Storage::disk('public')->delete($filePath);
                 }
@@ -89,7 +85,14 @@ class ServiceController extends Controller
         // Adding new files
         if ($request->hasFile('new_files')) {
             foreach ($request->file('new_files') as $uploadedFile) {
-                $path = $uploadedFile->storeAs($new_name, sanitizeFileName(($uploadedFile->getClientOriginalName()), $id), 'public');
+                $fileParth = $new_name."/".sanitizeFileName(($uploadedFile->getClientOriginalName()));
+                // dd($fileParth);
+                // if (Storage::disk('public')->exists($fileParth)) {
+
+                // }
+
+                $path = $uploadedFile->storeAs($new_name, sanitizeFileName(($uploadedFile->getClientOriginalName())), 'public');
+                // dd($path);
                 $service->files()->create([
                     'path' => $uploadedFile->getClientOriginalName()
                 ]);
@@ -156,7 +159,7 @@ class ServiceController extends Controller
         // Adding files
         if ($request->hasFile('new_files')) {
             foreach ($request->file('new_files') as $uploadedFile) {
-                $path = $uploadedFile->storeAs($new_name, sanitizeFileName(($uploadedFile->getClientOriginalName()), $service->id), 'public');
+                $path = $uploadedFile->storeAs($new_name, sanitizeFileName(($uploadedFile->getClientOriginalName())), 'public');
                 $service->files()->create([
                     'service_id' => $service->id,
                     'path' => $uploadedFile->getClientOriginalName()
