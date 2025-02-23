@@ -67,6 +67,7 @@
     </form>
     <form action="{{ route('service.delete', ['id' => $service->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this service?');">
             @csrf
+            @method('DELETE')
             <button type="submit">Delete Service</button>
     </form>
 </body>

@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Service;
 use App\Http\Controllers\ServiceController;
-// use App\Http\Controllers\Controller;
+use App\Http\Controllers\OutgoingController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,7 +20,11 @@ Route::put('/edit/service/id/{id}', [ServiceController::class, 'update'])->middl
 Route::get('/create/service', [ServiceController::class, 'serviceTemplate'])->middleware(['auth', 'verified'])->name('service.serviceTemplate');
 Route::post('/create/service', [ServiceController::class, 'create'])->middleware(['auth', 'verified'])->name('service.create');
 
-Route::post('/delete/service/id/{id}', [ServiceController::class, 'delete'])->middleware(['auth', 'verified'])->name('service.delete');
+Route::delete('/delete/service/id/{id}', [ServiceController::class, 'delete'])->middleware(['auth', 'verified'])->name('service.delete');
+
+Route::get('/show/outgoings', [OutgoingController::class, 'show'])->middleware(['auth', 'verified'])->name('outgoings.show');
+Route::post('/create/outgoings', [OutgoingController::class, 'create'])->middleware(['auth', 'verified'])->name('outgoings.create');
+Route::delete('/delete/outgoings/id/{id}', [OutgoingController::class, 'delete'])->middleware(['auth', 'verified'])->name('outgoings.delete');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
