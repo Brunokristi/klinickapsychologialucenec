@@ -18,12 +18,12 @@
 
         <label for="description">Description:</label>
         <br>
-        <textarea name="description"></textarea>
+        <textarea name="description" required></textarea>
         <br>
         
         <label for="icon">Icon:</label>
         <br>
-        <input type="text" name="icon">
+        <input type="text" required name="icon">
         <br>
 
         <h2>Tags</h2>

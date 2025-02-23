@@ -14,17 +14,17 @@
 
         <label for="name">Service name:</label>
         <br>
-        <input type="text" name="name" value="{{ $service->name }}" required>
+        <input type="text" name="name" required value="{{ $service->name }}" required>
         <br>
 
         <label for="description">Description:</label>
         <br>
-        <textarea name="description">{{ $service->description }}</textarea>
+        <textarea name="description" required>{{ $service->description }}</textarea>
         <br>
         
         <label for="icon">Icons (URL):</label>
         <br>
-        <input type="text" name="icon" value="{{ $service->icon }}">
+        <input type="text" name="icon" required value="{{ $service->icon }}">
         <br>
 
     
