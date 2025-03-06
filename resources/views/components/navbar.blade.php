@@ -10,8 +10,8 @@
     <!-- Mobile Navigation Links -->
     <div class="nav-links_mobile" id="mobile_second_menu">
         <a href="#">Služby</a>
-        <a href="#" class="active">O nás</a>
-        <a href="#">Kontakty</a>
+        <a href="about" class="active">O nás</a>
+        <a href="contact">Kontakty</a>
     </div>
 
     <div class="green-curve">
@@ -100,7 +100,7 @@
     .nav-links_mobile.show a:nth-child(3) { transition-delay: 0.3s; }
 
     .nav-links_mobile a:hover {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .nav-links_mobile.show {

@@ -46,7 +46,7 @@
         <div class="footer-column">
             <a href="tel:+421904203344">Telefón: 0904 203 344</a>
             <a href="mailto:nieco@klinika.sk">Email: niečo@klinika.sk</a>
-            <a href="#">Všetky kontakty</a>
+            <a href="contact">Všetky kontakty</a>
         </div>
 
         <svg width="100%" height="33" viewBox="0 0 100 33" preserveAspectRatio="none" fill="none"

@@ -3,11 +3,11 @@
 @section('title', 'Naši Profesionáli')
 
 @section('content')
-    <div class="contact">
+    <div class="contact" style="padding-top: 20%;">
         <h1>Telefón</h1>
-        <a class="button" href="#">Volať na číslo<i class="bi bi-arrow-right"></i></a>
+        <a class="button" href="tel:0944 094 090">Volať na číslo<i class="bi bi-arrow-right"></i></a>
         <p>0904 403 589</p>
-        <img src="{{ asset('images/plane.png') }}" alt="plane" >
+        <img src="{{ asset('images/phone.png') }}" alt="plane" >
     </div>
 
     <div class="contact-up-curve">
@@ -18,7 +18,7 @@
     </div>
     <div class="contact-section">
         <h1>Email</h1>
-        <a class="button white" href="#">Písať ma email<i class="bi bi-arrow-right"></i></a>
+        <a class="button white" href="mailto:klinickapsychologialc@gmail.com">Písať ma email<i class="bi bi-arrow-right"></i></a>
         <p>klinickapsychologia@gmail.com</p>
     </div>
     <div class="contact-bottom-curve">
@@ -30,25 +30,25 @@
 
     <div class="contact">
         <h1>Adresa</h1>
-        <a class="button" href="#">Navigovať na miesto<i class="bi bi-arrow-right"></i></a>
+        <a class="button" href="https://maps.app.goo.gl/RNbmVpx1gsTzGx2w8" target="_blank" rel="noopener noreferrer">Navigovať na miesto<i class="bi bi-arrow-right"></i></a>
         <p>Kuzmányiho 6</p>
         <div id="map"></div>
 
         <h1>Naše priestory</h1>
         <div class="scroll-container">
-            <div class="section" style="background: url('ambulancia.jpg') no-repeat center center; background-size: cover;">
+            <div class="section" style="background: url('{{ asset('images/ambulancia.jpg') }}') no-repeat center center; background-size: cover;">
                 <div class="bottom-section">
                     <span class="name">Lenka</span>
                 </div>
             </div>
         
-            <div class="section" style="background: url('doctor.jpg') no-repeat center center; background-size: cover;">
+            <div class="section" style="background: url('{{ asset('images/doctor.jpg') }}') no-repeat center center; background-size: cover;">
                 <div class="bottom-section">
                     <span class="name">Lenka</span>
                 </div>
             </div>
         
-            <div class="section" style="background: url('doctor.jpg') no-repeat center center; background-size: cover;">
+            <div class="section" style="background: url('{{ asset('images/doctor.jpg') }}') no-repeat center center; background-size: cover;">
                 <div class="bottom-section">
                     <span class="name">Lenka</span>
                 </div>
@@ -64,18 +64,12 @@
             </path>
         </svg>
     </div>
-    <div class="contact-section green">
+    <div class="contact-section green" style="margin-bottom: -60px; padding-bottom: 60px;">
         <h1>Ordinačné hodiny</h1>
         <p>PO-PIA 7:00-15:00</p>
         <div class="allert">
             <h1>Dňa 12.1.2024 neordinujeme. Zastupuje Ablancia XY.</h1>
         </div>
-    </div>
-    <div class="contact-bottom-curve green">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80">
-            <path fill="#B4D39C" fill-opacity="1" d="M0,0 C320,70 1120,-10 1440,60 L1440,80 L0,80 Z">
-            </path>
-        </svg>
     </div>
 @endsection
 
@@ -104,7 +98,6 @@
         .button {
             display: flex;
             padding: 10px;
-            padding-left: 30%;
             font-size: 18px;
             font-family: 'Karma', sans-serif;
             font-weight: 300;
@@ -118,8 +111,9 @@
             border-radius: 30px;
             box-shadow: 0 3px #BEE5F5;
             width: 100%;
-            justify-content: space-between;
+            justify-content: space-around;
             box-sizing: border-box;
+            max-width: 350px;
         }
 
         .button.white {
@@ -130,7 +124,7 @@
         }
 
         .button i {
-            margin-right: 30px;
+            align-self: center;
         } 
 
         .button:active {
@@ -151,6 +145,7 @@
             width: 100%;
             height: auto;
             margin-top: 20px;
+            max-width: 350px;
         }
 
         .contact-section {
@@ -211,6 +206,7 @@
             text-align: center;
             color: #BEE5F5;
             border-radius: 30px;
+            display: none;
         }
 
         .scroll-container {
@@ -372,4 +368,6 @@
             });
         }
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFEhUV6JylAf2KOOWeIzYiM-ILfryw9jM&callback=initMap" async defer></script>
+
 @endsection

@@ -3,7 +3,7 @@
 @section('title', 'Naši Profesionáli')
 
 @section('content')
-    <div class="about">
+    <div class="about" style="padding-top: 20%;">
         <h1>Čaves, Ja som Lenka!</h1>
         <h2>Mgr. Lenka Haferníková</h2>
         <span class="tag">dopravná psychológia</span>
@@ -12,7 +12,7 @@
 
         <div class="one-line">
             <img class="photo" src="{{ asset('images/doctor.jpg') }}" alt="photo">
-            <img class="photo" src="{{ asset('images/flowers.png') }}" alt="photo">
+            <img class="photo" src="{{ asset('images/flowers.png') }}" alt="photo" style="top: 20%;">
         </div>
     </div>
 
@@ -85,18 +85,12 @@
             </path>
         </svg>
     </div>
-    <div class="text">
+    <div class="text" style="margin-bottom: -60px; padding-bottom: 60px;">
         <p>Zameriavam sa na neviem čo. Psychológia ma baví od malička. Nejaké iné vety. Zameriavam sa na neviem čo.
             Psychológia ma
             baví od malička. Nejaké iné vety.</p>
     </div>
     
-    <div class="text-bottom-curve">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80">
-            <path fill="#B4D39C" fill-opacity="1" d="M0,0 C320,70 1120,-10 1440,60 L1440,80 L0,80 Z">
-            </path>
-        </svg>
-    </div>
 @endsection
 
 @section('styles')
@@ -111,7 +105,6 @@
             flex-direction: column;
             padding: 20px;
             position: relative;
-            padding-top: 30%;
         }
 
         .about h1 {
@@ -149,6 +142,7 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            margin-top: 20px;
         }
 
         .about .photo {
@@ -178,7 +172,7 @@
             font-size: 18px;
             font-weight: 300;
             color: #FFF;
-            padding: 20px;
+            padding: 40px 20px;
             margin: 0;
             text-align: justify;
         }
@@ -193,69 +187,6 @@
 
         .text-bottom-curve {
             margin-top: -5px;
-        }
-
-        .detail .one-line {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .detail .one-line p {
-            font-family: 'Karma', sans-serif;
-            font-size: 18px;
-            font-weight: 300;
-            color: #B4D39C;
-            padding: 0;
-        }
-
-        .detail .number {
-            font-family: 'Karma', sans-serif;
-            font-size: 18px;
-            font-weight: 300;
-            color: #fff;
-            padding: 0;
-            min-width: 40px;
-            min-height: 40px;
-            text-align: center;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: #BEE5F5;
-            margin: 0px;
-        }
-
-        
-
-        .detail .download {
-            display: flex;
-            padding: 10px;
-            padding-left: 30%;
-            font-size: 18px;
-            font-family: 'Karma', sans-serif;
-            font-weight: 300;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #B4D39C;
-            border: none;
-            border-radius: 30px;
-            box-shadow: 0 3px #BEE5F5;
-            width: 100%;
-            justify-content: space-between;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
-
-        .detail .download i {
-            margin-right: 30px;
-        } 
-
-        .detail .download:active {
-            transform: translateY(2px);
         }
     </style>
 @endsection
