@@ -140,34 +140,5 @@
                 $faqIcon.removeClass('bi-chevron-down').addClass('bi-chevron-up');
             }
         });
-
-        // Load Navbar and Footer
-        $("#navbar").load("html/navbar.html");
-        $("#footer").load("html/footer.html");
-
-        // Load Booking Component
-        function loadBookingComponent() {
-            const container = document.getElementById('booking-container');
-
-            if (window.innerWidth > 768) {
-                fetch('/booking-component')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! Status: ${response.status}`);
-                        }
-                        return response.text();
-                    })
-                    .then(html => {
-                        container.innerHTML = html;
-                    })
-                    .catch(error => console.error('Error loading booking component:', error));
-            } else {
-                container.innerHTML = '';
-            }
-        }
-
-        // Attach Booking Component Loaders
-        loadBookingComponent();
-        window.addEventListener('resize', loadBookingComponent);
     });
 </script>

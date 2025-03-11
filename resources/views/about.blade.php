@@ -159,7 +159,8 @@
             max-width: 120px; 
             z-index: 3;
             pointer-events: none;
-            height: fit-content;
+            height: auto;
+            width: 100px;
         }
 
         

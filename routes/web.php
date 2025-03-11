@@ -24,7 +24,7 @@ Route::get('/detail', function () {
 
 Route::get('/products', function () {
     return view('products');
-});
+}); 
 
 
 

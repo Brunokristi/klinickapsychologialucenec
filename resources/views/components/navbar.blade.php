@@ -9,7 +9,8 @@
 
     <!-- Mobile Navigation Links -->
     <div class="nav-links_mobile" id="mobile_second_menu">
-        <a href="#">Služby</a>
+        <a href="/">Domov</a>
+        <a href="products">Služby</a>
         <a href="about" class="active">O nás</a>
         <a href="contact">Kontakty</a>
     </div>

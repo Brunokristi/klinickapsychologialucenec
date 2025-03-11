@@ -5,8 +5,8 @@
 @section('content')
     <div class="contact" style="padding-top: 20%;">
         <h1>Telefón</h1>
-        <a class="button" href="tel:0944 094 090">Volať na číslo<i class="bi bi-arrow-right"></i></a>
-        <p>0904 403 589</p>
+        <a class="button" href="tel:0944 094 090">Volať na číslo<i class="bi bi-arrow-right"></i></a>
+        <a class="basic-text" style="color: #B4D39C; text-decoration: none;" href="tel:0944 094 090">+421 944 094 090</a>
         <img src="{{ asset('images/phone.png') }}" alt="plane" >
     </div>
 
@@ -19,7 +19,7 @@
     <div class="contact-section">
         <h1>Email</h1>
         <a class="button white" href="mailto:klinickapsychologialc@gmail.com">Písať ma email<i class="bi bi-arrow-right"></i></a>
-        <p>klinickapsychologia@gmail.com</p>
+        <p>klinickapsychologialc@gmail.com</p>
     </div>
     <div class="contact-bottom-curve">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80">
@@ -34,7 +34,7 @@
         <p>Kuzmányiho 6</p>
         <div id="map"></div>
 
-        <h1>Naše priestory</h1>
+        <h1 style="margin-top: 20px;">Naše priestory</h1>
         <div class="scroll-container">
             <div class="section" style="background: url('{{ asset('images/ambulancia.jpg') }}') no-repeat center center; background-size: cover;">
                 <div class="bottom-section">
@@ -139,6 +139,18 @@
             padding: 20px;
             margin: 0;
             text-align: center;
+            text-decoration: none;
+        }
+        
+        .basic-text {
+            font-family: 'Karma', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            color: #B4D39C;
+            padding: 20px;
+            margin: 0;
+            text-align: center;
+            text-decoration: none;
         }
 
         .contact img {
@@ -146,6 +158,7 @@
             height: auto;
             margin-top: 20px;
             max-width: 350px;
+
         }
 
         .contact-section {
@@ -171,6 +184,8 @@
             font-weight: 300;
             padding: 20px;
             margin: 0;
+            color: #fff !important;
+            text-decoration: none !important;
         }
 
         .contact-section.green {
@@ -194,6 +209,7 @@
             width: 100%;
             border-radius: 30px;
             border: none;
+            margin-bottom: 40px;
         }
 
         .contact-section .allert {
@@ -353,18 +369,27 @@
                 map: map,
                 title: "Ambulancia Klinickej a Dopravnej Psychológie",
                 icon: {
-                    url: "marker.svg",
+                    url: "{{ asset('images/marker.svg') }}",
                     scaledSize: new google.maps.Size(40, 40),
                 }
             });
+            
+            const tesco = new google.maps.Marker({
+                position: { lat: 48.33639130032658, lng: 19.65977700277434 },
+                map: map,
+                title: "Tesco",
+                icon: {
+                    url: "{{ asset('images/tesco.png') }}",
+                    scaledSize: new google.maps.Size(40, 20),
+                }
+            });
 
-            // Add an info window (popup) when clicking on the marker
             const infoWindow = new google.maps.InfoWindow({
                 content: "<strong>Ambulancia Klinickej a Dopravnej Psychológie</strong><br>K. Kuzmányho 1757/7, 984 01 Lučenec"
             });
 
             marker.addListener("click", () => {
-                infoWindow.open(map, marker);
+                infoWindow.open(map, marker, tesco);
             });
         }
     </script>

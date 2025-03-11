@@ -2,7 +2,7 @@
         <h1>Doprajte si možnosť znovu objaviť Vašu vnútornú</h1>
         <span id="changing-text">slobodu</span>
         <img class="landing-image" src="{{ asset('images/landing.png') }}" alt="contacts"> 
-        <a href="#" class="button">Chcem začať<i class="bi bi-arrow-right"></i></a>
+        <a href="products" class="button">Chcem začať<i class="bi bi-arrow-right"></i></a>
         <p>Ambulancia klinickej a dopravnej psychológie v Lučenci</p>
     </div>
 

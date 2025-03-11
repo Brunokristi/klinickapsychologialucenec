@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\File as FileModel;
 
+function sanitizeFileName($name, $id = null) {
+    $name = strtolower($name);
+    $name = str_replace(' ', '_', $name);
+    $name = preg_replace('/[^a-z0-9_\-]/', '', $name);
+    return $id ? $name . "_" . $id : $name;
+}
+
+
 class ServiceController extends Controller
 {
     public function edit($id) {

@@ -21,7 +21,7 @@
                         d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                         stroke="#B4D39C" stroke-width="0.5" />
                 </svg>
-                <a href="#"><i class="bi bi-arrow-right"></i></a>
+                <a href="detail"><i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
                         d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                         stroke="#B4D39C" stroke-width="0.5" />
                 </svg>
-                <a href="#"><i class="bi bi-arrow-right"></i></a>
+                <a href="detail"><i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                         d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                         stroke="#B4D39C" stroke-width="0.5" />
                 </svg>
-                <a href="#"><i class="bi bi-arrow-right"></i></a>
+                <a href="detail"><i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
 
@@ -74,7 +74,7 @@
                         d="M22 13C21.6706 13.931 21.4375 16.375 17.7182 16.4138C17.7182 16.4138 14.4246 16.4138 13.4365 18.2759C12.646 19.7655 13.1071 21.3793 13.4365 22"
                         stroke="#BEE5F5" stroke-width="0.5" />
                 </svg>
-                <a href="#"><i class="bi bi-arrow-right"></i></a>
+                <a href="products"><i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
     </div>

@@ -37,7 +37,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -55,7 +55,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -114,7 +114,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -132,7 +132,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -175,7 +175,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -193,7 +193,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -216,7 +216,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -234,7 +234,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -252,7 +252,7 @@
                             d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
                             stroke="#fff" stroke-width="0.5" />
                     </svg>
-                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
         </div>
