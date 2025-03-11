@@ -11,9 +11,9 @@
         <a href="tel:0944 094 090" class="button">Volať na telefón <i class="bi bi-arrow-right"></i></a>
         <a href="mailto:klinickapsychologialc@gmail.com" class="button">Písať na email <i class="bi bi-arrow-right"></i></a>
         <a href="https://maps.app.goo.gl/RNbmVpx1gsTzGx2w8" target="_blank" rel="noopener noreferrer" class="button">Navigovať na adresu <i class="bi bi-arrow-right"></i></a>
-        <a href="contact">Viac spôsobov, ako nás kontaktovať <i class="bi bi-arrow-right"></i></a>
-        <img  src="{{ asset('images/plane.png') }}" alt="plane">
     </div>
+    <a href="contact">Viac spôsobov, ako nás kontaktovať <i class="bi bi-arrow-right"></i></a>
+    <img  src="{{ asset('images/plane.png') }}" alt="plane">
 </div>
 <div class="contacts-bottom-curve">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80">
@@ -35,6 +35,8 @@
         flex-direction: column;
         z-index: 50;
         position: relative;
+        justify-content: center;
+        align-items: center;
     }
 
     .contacts h1{
@@ -60,6 +62,7 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        width: 100%;
     }
 
 
@@ -118,6 +121,23 @@
         margin-bottom: -50px;
         z-index: 1;
         max-width: 350px;
+    }
+
+    @media screen and (min-width: 768px) {
+        .buttons {
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .buttons a {
+             min-width: 300px;
+        }
+
+        .contacts {
+            justify-content: center;
+            align-items: center;    
+        }
     }
 
 </style>

@@ -3,7 +3,7 @@
 @section('title', 'Služba')
 
 @section('content')
-    <div class="detail" style="padding-top: 20%;">
+    <div class="detail" style="padding-top: 90px;">
         <h1>Skupinová terapia</h1>
         <span class="tag">kategória</span>
         <span class="tag">hradí poisťovňa</span>

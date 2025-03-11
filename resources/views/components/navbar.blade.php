@@ -41,6 +41,12 @@
         height: 50px;
     }
 
+    @media screen and (min-width: 768px) {
+        .topnav .green-curve {
+            display: none;
+        }
+    }
+
     .topnav a {
         text-decoration: none;
         display: flex;

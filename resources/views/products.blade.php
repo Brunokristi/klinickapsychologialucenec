@@ -267,7 +267,7 @@
     
     .search {
         padding: 20px;
-        padding-top: 20%;
+        padding-top: 90px;
         background-color: #fff;
     }
 

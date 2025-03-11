@@ -116,6 +116,7 @@
     .text-container {
         max-width: 600px;
         position: relative;
+        width: 100%;
     }
 
     .text-content {
@@ -146,5 +147,23 @@
         border-radius: 5px;
         cursor: pointer;
         padding: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+        .buttons {
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .buttons a {
+             min-width: 300px;
+        }
+
+        .contracts {
+            justify-content: center;
+            align-items: center;    
+            padding-bottom: 200px;
+            margin-bottom: -100px;        }
     }
 </style>

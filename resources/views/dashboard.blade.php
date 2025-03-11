@@ -3,7 +3,7 @@
 @section('title', 'Admin Panel')
 
 @section('content')
-    <div class="container" style="padding-top: 20%;">
+    <div class="container" style="padding-top: 90px;">
         <h1>Čaves, vitaj späť 👋</h1>
         
         <div class="button-container">

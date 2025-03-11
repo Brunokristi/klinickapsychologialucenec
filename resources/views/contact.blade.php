@@ -3,7 +3,7 @@
 @section('title', 'Naši Profesionáli')
 
 @section('content')
-    <div class="contact" style="padding-top: 20%;">
+    <div class="contact" style="padding-top: 90px;">
         <h1>Telefón</h1>
         <a class="button" href="tel:0944 094 090">Volať na číslo<i class="bi bi-arrow-right"></i></a>
         <a class="basic-text" style="color: #B4D39C; text-decoration: none;" href="tel:0944 094 090">+421 944 094 090</a>

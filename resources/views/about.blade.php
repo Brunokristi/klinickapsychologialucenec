@@ -3,12 +3,16 @@
 @section('title', 'Naši Profesionáli')
 
 @section('content')
-    <div class="about" style="padding-top: 20%;">
-        <h1>Čaves, Ja som Lenka!</h1>
-        <h2>Mgr. Lenka Haferníková</h2>
-        <span class="tag">dopravná psychológia</span>
-        <span class="tag">terapia</span>
-        <span class="tag">detská psychológia</span>
+    <div class="about" style="padding-top: 90px;">
+        <div>
+            <h1>Čaves, Ja som Lenka!</h1>
+            <h2>Mgr. Lenka Haferníková</h2>
+            <div class="spans">
+                <span class="tag">dopravná psychológia</span>
+                <span class="tag">terapia</span>
+                <span class="tag">detská psychológia</span>
+            </div>
+        </div>
 
         <div class="one-line">
             <img class="photo" src="{{ asset('images/doctor.jpg') }}" alt="photo">
@@ -35,11 +39,15 @@
     </div>
 
     <div class="about">
-        <h1>Čaves, Ja som Lenka!</h1>
-        <h2>Mgr. Lenka Haferníková</h2>
-        <span class="tag">dopravná psychológia</span>
-        <span class="tag">terapia</span>
-        <span class="tag">detská psychológia</span>
+        <div>
+            <h1>Čaves, Ja som Lenka!</h1>
+            <h2>Mgr. Lenka Haferníková</h2>
+            <div class="spans">
+                <span class="tag">dopravná psychológia</span>
+                <span class="tag">terapia</span>
+                <span class="tag">detská psychológia</span>
+            </div>
+        </div>
     
         <div class="one-line">
             <img class="photo" src="{{ asset('images/doctor.jpg') }}" alt="photo">
@@ -67,11 +75,15 @@
     </div>
 
     <div class="about">
-        <h1>Čaves, Ja som Lenka!</h1>
-        <h2>Mgr. Lenka Haferníková</h2>
-        <span class="tag">dopravná psychológia</span>
-        <span class="tag">terapia</span>
-        <span class="tag">detská psychológia</span>
+        <div>
+            <h1>Čaves, Ja som Lenka!</h1>
+            <h2>Mgr. Lenka Haferníková</h2>
+            <div class="spans">
+                <span class="tag">dopravná psychológia</span>
+                <span class="tag">terapia</span>
+                <span class="tag">detská psychológia</span>
+            </div>
+        </div>
     
         <div class="one-line">
             <img class="photo" src="{{ asset('images/doctor.jpg') }}" alt="photo">
@@ -163,6 +175,12 @@
             width: 100px;
         }
 
+
+        .spans {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
         
         .text {
             background-color: #B4D39C;
@@ -189,6 +207,18 @@
         .text-bottom-curve {
             margin-top: -5px;
         }
+
+
+        @media screen and (min-width: 768px) {
+        .about {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
+            min-width: 500px;
+        }
+
+    }
     </style>
 @endsection
 

@@ -20,7 +20,7 @@
             background-color: #fff;
             flex-direction: column;
             align-items: center;
-            padding-top: 20%;
+            padding-top: 90px;
         }
 
         .landing h1, p {
