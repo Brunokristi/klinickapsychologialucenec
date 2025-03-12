@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Naši Profesionáli')
+@section('title', 'Kontakt')
 
 @section('content')
     <div class="contact" style="padding-top: 90px;">
@@ -31,7 +31,7 @@
     <div class="contact">
         <h1>Adresa</h1>
         <a class="button" href="https://maps.app.goo.gl/RNbmVpx1gsTzGx2w8" target="_blank" rel="noopener noreferrer">Navigovať na miesto<i class="bi bi-arrow-right"></i></a>
-        <p>Kuzmányiho 6</p>
+        <p>K. Kuzmányho 7, Lučenec</p>
         <div id="map"></div>
 
         <h1 style="margin-top: 20px;">Naše priestory</h1>
@@ -359,7 +359,7 @@
             // Create the map
             const map = new google.maps.Map(document.getElementById("map"), {
                 center: { lat: 48.33720225232961, lng: 19.662109538266197 },
-                zoom: 15,
+                zoom: 16,
                 styles: mapStyles,
                 disableDefaultUI: true,
             });
@@ -380,7 +380,17 @@
                 title: "Tesco",
                 icon: {
                     url: "{{ asset('images/tesco.png') }}",
-                    scaledSize: new google.maps.Size(40, 20),
+                    scaledSize: new google.maps.Size(50, 20),
+                }
+            });
+
+            const redcross = new google.maps.Marker({
+                position: { lat: 48.33751661009178, lng: 19.66096136359495 },
+                map: map,
+                title: "Červený kríž",
+                icon: {
+                    url: "{{ asset('images/redcross.png') }}",
+                    scaledSize: new google.maps.Size(40, 40),
                 }
             });
 

@@ -208,7 +208,6 @@
             margin-top: -5px;
         }
 
-
         @media screen and (min-width: 768px) {
         .about {
             display: flex;
