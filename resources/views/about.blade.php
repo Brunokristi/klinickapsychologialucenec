@@ -15,7 +15,7 @@
         </div>
 
         <div class="one-line">
-            <img class="photo" src="{{ asset('images/doctor.jpg') }}" alt="photo">
+            <img class="photo normal" src="{{ asset('images/doctor.jpg') }}" alt="photo">
             <img class="photo" src="{{ asset('images/flowers.png') }}" alt="photo" style="top: 20%;">
         </div>
     </div>
@@ -50,7 +50,7 @@
         </div>
     
         <div class="one-line">
-            <img class="photo" src="{{ asset('images/doctor.jpg') }}" alt="photo">
+            <img class="photo normal" src="{{ asset('images/doctor.jpg') }}" alt="photo">
             <img class="photo" src="{{ asset('images/flowers.png') }}" alt="photo">
         </div>
     </div>
@@ -86,7 +86,7 @@
         </div>
     
         <div class="one-line">
-            <img class="photo" src="{{ asset('images/doctor.jpg') }}" alt="photo">
+            <img class="photo normal" src="{{ asset('images/doctor.jpg') }}" alt="photo">
             <img class="photo" src="{{ asset('images/flowers.png') }}" alt="photo">
         </div>
     </div>
@@ -97,7 +97,7 @@
             </path>
         </svg>
     </div>
-    <div class="text" style="margin-bottom: -60px; padding-bottom: 60px;">
+    <div class="text" style="margin-bottom: -100px; padding-bottom: 200px;">
         <p>Zameriavam sa na neviem čo. Psychológia ma baví od malička. Nejaké iné vety. Zameriavam sa na neviem čo.
             Psychológia ma
             baví od malička. Nejaké iné vety.</p>
@@ -212,11 +212,18 @@
         .about {
             display: flex;
             flex-direction: row;
+            align-items: center;
             gap: 20px;
             justify-content: center;
-            min-width: 500px;
+            height: 400px;
         }
 
+        .normal {
+            min-width: 300px;
+        }
+
+        
+    
     }
     </style>
 @endsection

@@ -471,6 +471,14 @@
 
     .illustration {
         width: 100%;
+        max-width: 500px;
+    }
+
+    @media screen and (min-width: 768px) {
+        .illustration {
+            display: none;
+        }
+        
     }
 
 </style>

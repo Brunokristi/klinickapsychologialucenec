@@ -64,7 +64,7 @@
             </path>
         </svg>
     </div>
-    <div class="contact-section green" style="margin-bottom: -60px; padding-bottom: 60px;">
+    <div class="contact-section green" style="margin-bottom: -100px; padding-bottom: 200px;">
         <h1>Ordinačné hodiny</h1>
         <p>PO-PIA 7:00-15:00</p>
         <div class="allert">
@@ -353,17 +353,43 @@
                     "featureType": "road",
                     "elementType": "geometry.stroke",
                     "stylers": [{ "color": "#BEE5F5" }]
-                }
+                },
             ];
 
             // Create the map
             const map = new google.maps.Map(document.getElementById("map"), {
                 center: { lat: 48.33720225232961, lng: 19.662109538266197 },
-                zoom: 16,
+                zoom: 18,
                 styles: mapStyles,
                 disableDefaultUI: true,
             });
 
+            // Define polygon coordinates for the building
+            const buildingCoords = [
+                { lat: 48.337169093658446, lng: 19.662081912387347 },
+                { lat: 48.33715482966858, lng: 19.662237480395724 },
+                { lat: 48.33718246591212, lng: 19.66226966698096 },
+                { lat: 48.33737681156121, lng: 19.66218853056711 },
+                { lat: 48.337366113677085, lng: 19.662104040664097 },
+                { lat: 48.33722704070872, lng: 19.662131533278234 },
+                { lat: 48.33722748646293, lng: 19.662091300117808 },
+                { lat: 48.33716909365807, lng: 19.66208124183476 }
+            ];
+
+            // Create a polygon to highlight the building
+            const buildingPolygon = new google.maps.Polygon({
+                paths: buildingCoords,
+                strokeColor: "#BEE5F5",
+                strokeOpacity: 1,
+                strokeWeight: 2,
+                fillColor: "#BEE5F5",
+                fillOpacity: 1
+            });
+
+            // Add the polygon to the map
+            buildingPolygon.setMap(map);
+
+            // Create markers
             const marker = new google.maps.Marker({
                 position: { lat: 48.33720225232961, lng: 19.662109538266197 },
                 map: map,
@@ -373,7 +399,7 @@
                     scaledSize: new google.maps.Size(40, 40),
                 }
             });
-            
+
             const tesco = new google.maps.Marker({
                 position: { lat: 48.33639130032658, lng: 19.65977700277434 },
                 map: map,
@@ -394,15 +420,15 @@
                 }
             });
 
+            // Info window for the marker
             const infoWindow = new google.maps.InfoWindow({
                 content: "<strong>Ambulancia Klinickej a Dopravnej Psychológie</strong><br>K. Kuzmányho 1757/7, 984 01 Lučenec"
             });
 
             marker.addListener("click", () => {
-                infoWindow.open(map, marker, tesco);
+                infoWindow.open(map, marker);
             });
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFEhUV6JylAf2KOOWeIzYiM-ILfryw9jM&callback=initMap" async defer></script>
-
 @endsection
