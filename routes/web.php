@@ -10,9 +10,13 @@ use App\Http\Controllers\OutgoingController;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    $dates = DB::table('dates')->get();
-    return view('home', compact('dates'));
-});
+    $serviceIds = [9];
+    $services = Service::whereIn('id', $serviceIds)->get();
+    $dates = DB::table('dates')->get(); 
+
+    return view('home', compact('services', 'dates'));
+})->name('home');
+
 
 Route::get('/about', function () {
     return view('about');
@@ -31,7 +35,7 @@ Route::get('/service/{id}', function ($id) {
 Route::get('/products', function () {
     $categories = Category::with('services')->get();
     return view('products', compact('categories'));
-});
+})->name('products');
 
 Route::get('/services/search', function (Request $request) {
     $query = $request->get('q');
