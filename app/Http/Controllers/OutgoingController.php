@@ -21,12 +21,12 @@ class OutgoingController extends Controller {
         
         Dates::create($request->only(['date', 'text']));
         
-        return redirect()->route('outgoings.show')->with('success', 'Service aded successfully!');
+        return redirect()->route('outgoings.show')->with('success', 'Neprítomnosť úspešne pridaná!');
     }
      
     public function delete($id) {
         $date = Dates::findOrFail($id);
         $date->delete();
-        return redirect()->route('outgoings.show')->with('success', 'Service deleted successfully');
+        return redirect()->route('outgoings.show')->with('success', 'Neprítomnosť úspešne odstránená!');
     }
 }

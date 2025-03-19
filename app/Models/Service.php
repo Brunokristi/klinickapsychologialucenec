@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
-    public $timestamps = false;
-    protected $fillable = ['name', 'description', 'icon'];
 
-    public static function getAllNames(): array {
-        return self::select('id', 'name')->get()->toArray();
+    public $timestamps = false;
+    protected $fillable = ['name', 'description', 'icon', 'category_id'];
+
+    public static function getAllNames()
+    {
+        return self::select('id', 'name')->get();
     }
 
     public function tags()
@@ -30,8 +32,23 @@ class Service extends Model
         return $this->hasMany(File::class);
     }
 
+    public function necessities()
+    {
+        return $this->hasMany(Necessity::class);
+    }
+
+    public function information()
+    {
+        return $this->hasMany(Information::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
     public static function getServiceInformation($id)
     {
-        return self::with(['tags', 'steps', 'files'])->findOrFail($id);
+        return self::with(['tags', 'steps', 'files', 'information', 'necessities'])->findOrFail($id);
     }
 }

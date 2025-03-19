@@ -1,56 +1,58 @@
 @extends('layouts.app')
 
-@section('title', 'Služba')
+@section('title', $service->name)
 
 @section('content')
     <div class="detail" style="padding-top: 90px;">
-        <h1>Skupinová terapia</h1>
-        <span class="tag">kategória</span>
-        <span class="tag">hradí poisťovňa</span>
+        <h1>{{ $service->name }}</h1>
+        @foreach($service->tags as $tag)
+            <span class="token">{{ $tag->name }}</span>
+        @endforeach
     </div>
 
     <div class="text-up-curve">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80">
-            <path fill="#BEE5F5" fill-opacity="1" d="M0,0 C0,0 1120,120 1440,10 L1440,90 L0,90 Z">
-            </path>
+            <path fill="#BEE5F5" fill-opacity="1" d="M0,0 C0,0 1120,120 1440,10 L1440,90 L0,90 Z"></path>
         </svg>
     </div>
     <div class="text">
-        <p>Zameriavam sa na neviem čo. Psychológia ma baví od malička. Nejaké iné vety. Zameriavam sa na neviem čo. Psychológia ma
-        baví od malička. Nejaké iné vety.</p>
+        <p>{{ $service->description }}</p>
     </div>
 
     <div class="text-bottom-curve">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80">
-            <path fill="#BEE5F5" fill-opacity="1" d="M0,0 C320,70 1120,-10 1440,60 L1440,80 L0,80 Z">
-            </path>
+            <path fill="#BEE5F5" fill-opacity="1" d="M0,0 C320,70 1120,-10 1440,60 L1440,80 L0,80 Z"></path>
         </svg>
     </div>
 
     <div class="detail">
+        <h2>Priebeh</h2>
+        @foreach($service->steps as $index => $step)
+            <div class="one-line">
+                <span class="number">{{ $index + 1 }}.</span>
+                <p>{{ $step->text }}</p>
+            </div>
+        @endforeach
+
+        <h2>Čo si priniesť</h2>
+        @foreach($service->necessities as $necessity)
         <div class="one-line">
-            <span class="number">1.</span>
-            <p>Objednajte sa na termín Objednajte sa na termín</p>
+            <span class="bullet"></span>
+            <p>{{ $necessity->text }}</p>
         </div>
+        @endforeach
+        @foreach($service->files as $file)
+            <a class="download" href="{{ Storage::url($file->path) }}" target="_blank">{{ basename($file->path) }} <i class="bi bi-arrow-down"></i></a>
+        @endforeach
 
-        <div class="one-line">
-            <span class="number">2.</span>
-            <p>Príďte nás navštíviť</p>
-        </div>
+        <h2>Dôležité informácie</h2>
+        @foreach($service->information as $information)
+            <div class="one-line">
+                <span class="bullet"></span>
+                <p>{{ $information->text }}</p>
+            </div>
+        @endforeach
 
-        <div class="one-line">
-            <span class="number">3.</span>
-            <p>Príďte nás navštíviť</p>
-        </div>
-
-
-        <h2>Všetko, čo potrebujete na jednom mieste</h2>
-        <p>Pridte oddychnuti a zrelaxovani.</p>
-        <p>Pridte oddychnuti a zrelaxovani.</p>
-        <a class="download" href="#">Prihlasovací formulár <i class="bi bi-arrow-down"></i></a>
-        <a class="download" href="#">Prihlasovací formulár <i class="bi bi-arrow-down"></i></a>
-        <a class="download" href="#">Prihlasovací formulár <i class="bi bi-arrow-down"></i></a>
-        
     </div>
 @endsection
 
@@ -75,7 +77,7 @@
             padding: 0;
         }
 
-        .detail span {
+        .detail .token {
             font-family: 'Karma', sans-serif;
             font-size: 18px;
             font-weight: 300;
@@ -152,7 +154,7 @@
             font-family: 'Karma', sans-serif;
             font-size: 1.3rem;
             font-weight: 300;
-            color: #B4D39C;
+            color: #BEE5F5;
             padding: 0;
             margin-top: 50px;
         }
@@ -195,6 +197,13 @@
             padding: 0;
             margin: 0;
             margin-bottom: 20px;
+        }
+
+        .detail .bullet {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #BEE5F5;
         }
     </style>
 @endsection

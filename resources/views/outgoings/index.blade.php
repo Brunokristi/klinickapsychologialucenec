@@ -3,7 +3,7 @@
 @section('title', 'Admin Panel')
 
 @section('content')
-    <div class="container" style="padding-top: 20%;">
+    <div class="container" style="padding-top: 70px;">
         <h1>Spravovanie neprítomností</h1>
 
         @if(session('success'))
@@ -34,13 +34,6 @@
 
    <div class="container">
     <table>
-        <thead>
-            <tr>
-                <th>Dátum</th>
-                <th>Text</th>
-                <th>Akcia</th>
-            </tr>
-        </thead>
         <tbody>
             @foreach($outgoings as $outgoing)
                 <tr>
@@ -57,7 +50,7 @@
             @endforeach
         </tbody>
     </table>
-    <a class="text" href="{{ route('dashboard') }}"> < späť na admin panel</a>
+    <a class="text" href="{{ route('dashboard') }}">späť na admin panel</a>
 </div>
 @endsection
 
@@ -138,7 +131,8 @@
         background-color: white;
         border-radius: 30px;
         overflow: hidden;
-        max-width: 500px;
+        text-align: center;
+
     }
 
     thead tr {

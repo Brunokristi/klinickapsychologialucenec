@@ -4,260 +4,42 @@
 
 @section('content')
     <div class="search">
-        <form role="search" id="form">
-            <input type="search" id="query" name="q" placeholder="Hľadaný výraz..." aria-label="Search through site content">
-            <button>
+        <form role="search" id="form" action="{{ route('services.search') }}" method="GET">
+            <input type="search" id="query" name="q" placeholder="Hľadaný výraz..." aria-label="Search through site content" value="{{ request('q') }}">
+            <button type="submit">
                 <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
-                    <g id="SVGRepo_iconCarrier">
-                        <path
-                            d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
-                            stroke="#B4D39C" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-                    </g>
+                    <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#B4D39C" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                 </svg>
             </button>   
         </form>
     </div>
 
-    <div class="scroll">
-        <h1 style="color:#fee5f5">Kategória</h1>
-        <div class="scroll-container">
-            <div class="section blue">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
+    @foreach($categories as $category)
+        @if($category->services->isNotEmpty())
+            <div class="scroll">
+                <h1 style="color:#fee5f5">{{ $category->name }}</h1>
+                <div class="scroll-container">
+                    @foreach($category->services as $service)
+                        <div class="section blue">
+                            <h1>{{ $service->name }}</h1>
+                            @foreach($service->tags as $tag)
+                                <span class="token">{{ $tag->name }}</span>
+                            @endforeach
+                            
+                            <div class="bottom-section">
+                                {!! $service->icon !!}
+                                <a href="{{ route('service.detail', ['id' => $service->id]) }}"><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+        @endif
+    @endforeach
 
-            <div class="section blue">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-            
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="section blue">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-            
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="scroll">
-        <h1 style="color:#b4c39d">Kategória</h1>
-        <div class="scroll-container">
-            <div class="section green">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="section green">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-            
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="section green">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-            
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <img class="illustration" src="{{ asset('images/hands.png') }}" alt="illustration"> 
-
-    <div class="scroll">
-        <h1 style="color:#fee5f5">Kategória</h1>
-        <div class="scroll-container">
-            <div class="section blue">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="section blue">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-            
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="section blue">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-            
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="scroll">
-        <h1 style="color:#b4c39d">Kategória</h1>
-        <div class="scroll-container">
-            <div class="section green">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="section green">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-            
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="section green">
-                <h1>Skupinová terapia</h1>
-                <span class="token">kategoria</span>
-                <span class="token">hradi poistovna</span>
-            
-                <div class="bottom-section">
-                    <svg width="120px" height="120px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.9423 3.05768C23.4117 5.52701 21.4099 11.5324 16.4712 16.4711C11.5326 21.4097 5.5272 23.4115 3.05787 20.9422C0.588547 18.4728 2.59033 12.4675 7.52899 7.5288C12.4676 2.59014 18.473 0.588345 20.9423 3.05768ZM3.05768 3.05782C0.588349 5.52715 2.59013 11.5325 7.52879 16.4712C12.4674 21.4099 18.4728 23.4117 20.9421 20.9423C23.4115 18.473 21.4097 12.4676 16.471 7.52894C11.5324 2.59028 5.527 0.588485 3.05768 3.05782Z"
-                            stroke="#fff" stroke-width="0.5" />
-                        <path
-                            d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
-                            stroke="#fff" stroke-width="0.5" />
-                    </svg>
-                    <a href="detail"><i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @if($categories->isEmpty() || $categories->every(fn($cat) => $cat->services->isEmpty()))
+        <p style="text-align: center; color: red;">Žiadne služby neboli nájdené</p>
+    @endif
 @endsection
 
 @section('styles')

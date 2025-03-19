@@ -12,17 +12,11 @@
         </div>
 
         <table>
-            <thead>
-                <tr>
-                    <th>Názov služby</th>
-                    <th>Akcia</th>
-                </tr>
-            </thead>
             <tbody>
                 @foreach($services as $service)
                     <tr>
                         <td>{{ $service['name'] }}</td>
-                        <td>
+                        <td class="text-right">
                             <a href="{{ route('service.edit', ['id' => $service['id']]) }}" class="edit-button">
                                 Upraviť <i class="bi bi-arrow-right"></i>
                             </a>
@@ -51,7 +45,7 @@
         font-weight: 300;
         color: #B4D39C;
         padding: 0;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
         text-align: center;
     }
 
@@ -59,7 +53,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
         width: 100%;
         max-width: 500px;
     }
@@ -84,27 +78,19 @@
 
     table {
         width: 100%;
-        border-collapse: collapse;
         font-size: 16px;
         color: #333;
         margin-top: 20px;
         background-color: white;
-        border-radius: 30px;
         overflow: hidden;
         max-width: 500px;
-    }
-
-    thead {
-        background-color: #B4D39C;
-        color: white;
-        text-align: center;
     }
 
     th, td {
         padding: 12px;
         border-bottom: 1px solid #BEE5F5;
         font-weight: normal;
-        text-align: center;
+        text-align: left;
     }
 
     td {
@@ -115,11 +101,17 @@
         border-bottom: none;
     }
 
+    .text-right {
+        text-align: right;
+    }
+
     .edit-button {
         display: inline-block;
         padding: 5px 15px;
-        color: #B4D39C;
+        color: #fff;
         text-decoration: none;
+        background-color: #BEE5F5;
+        border-radius: 30px;
     }
 
 </style>

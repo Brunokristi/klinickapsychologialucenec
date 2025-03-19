@@ -9,46 +9,86 @@
         <form action="{{ route('service.create') }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
 
-            <label for="name">Názov služby:</label>
+            <label for="category">Kategória</label>
+            <select name="category_id" required>
+                <option value="">Vyberte kategóriu</option>
+                <option value="1">Dopravná psychológia</option>
+                <option value="2">ONLINE terapia a poradenstvo</option>
+                <option value="3">Terapeutická a konzultačná činnosť pre rodičov, deti a adolescentov</option>
+                <option value="4">Posúdenie psychickej spôsobilosti</option>
+                <option value="5">Psychodiagnostické vyšetrenie detí a dospelých</option>
+                <option value="6">HRV Biofeedback</option>
+                <option value="7">Neuro-psychologická rehabilitácia COGNI PLUS Tréning</option>
+            </select>
+            @error('category_id') 
+                <span>{{ $message }}</span> 
+            @enderror
+
+
+            <label for="name">Názov služby</label>
             <input type="text" name="name" required>
             @error('name') <span>{{ $message }}</span> @enderror
 
-            <label for="description">Opis služby:</label>
-            <textarea name="description" required></textarea>
-            @error('description') <span>{{ $message }}</span> @enderror
-            
-            <label for="icon">Reprezentujúca ikona:</label>
-            <input type="text" required name="icon">
-            @error('icon') <span>{{ $message }}</span> @enderror
 
             <h2>Tagy</h2>
             <ul id="tags-container">
-                <li><input type="text" name="tags[]"></li>
+                <li>
+                    <input type="text" name="tags[]">
+                </li>
             </ul>
             <button type="button" class="add-button" onclick="addInput('tags-container', 'tags[]')">Pridať tag</button>
 
-            <h2>Kroky</h2>
+            <label for="description">Popis</label>
+            <textarea name="description" rows="10" required ></textarea>
+            @error('description') <span>{{ $message }}</span> @enderror
+
+
+            <h2>Priebeh</h2>
             <ul id="steps-container">
-                <li><input type="text" name="steps[]"></li>
+                <li>
+                    <input type="text" name="steps[]">
+                </li>
             </ul>
             <button type="button" class="add-button" onclick="addInput('steps-container', 'steps[]')">Pridať krok</button>
 
+
+            <h2>Čo si priniesť</h2>
+            <ul id="necessities-container">
+                <li>
+                    <input type="text" name="necessities[]">
+                </li>
+            </ul>
+            <button type="button" class="add-button" onclick="addInput('necessities-container', 'necessities[]')">Pridať položku</button>
+            
+
             <h2>Súbory</h2>
-            <label for="files">Pridať súbory:</label>
             <input type="file" name="new_files[]" multiple accept=".pdf,.doc,.docx">
             @error('new_files') <span>{{ $message }}</span> @enderror
 
+
+            <h2>Dôležité informácie</h2>
+            <ul id="information-container">
+                <li>
+                    <input type="text" name="information[]">
+                </li>
+            </ul>
+            <button type="button" class="add-button" onclick="addInput('information-container', 'information[]')">Pridať informáciu</button>
+
+
+            <label for="icon">Reprezentujúca ikona (svg)</label>
+            <input type="text" required name="icon">
+            @error('icon') <span>{{ $message }}</span> @enderror
+
+
             <button type="submit">Vytvoriť</button>
-            <a class="text" href="{{ route('dashboard') }}"> < späť na admin panel</a>
+            <a class="text" href="{{ route('dashboard') }}">späť na admin panel</a>
         </form>
     </div>
 @endsection
 
 @section('styles')
 <style>
-
-    .container {
-        padding-top: 20%;
+.container {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -56,6 +96,9 @@
         margin: 20px auto;
         background-color: #fff;
         font-family: 'Inter', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 300;
+        padding-top: 50px;
     }
 
     .container h1 {
@@ -88,7 +131,8 @@
     }
 
     .form input,
-    .form textarea {
+    .form textarea,
+    .form select {
         width: 100%;
         padding: 10px;
         border: 1px solid #B4D39C;
@@ -109,6 +153,8 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        display: flex;
+        justify-content: space-between;
     }
 
     .form ul li input {
@@ -134,9 +180,16 @@
         transition: background-color 0.3s;
     }
 
-    .form textarea {
-        height: 100px;
-        resize: none;
+    .form .delete-button {
+        background-color: white;
+        color: white;
+        border: none;
+        font-size: 16px;
+        font-weight: 300;
+        border-radius: 30px;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
     }
 
     .form .outlined {
@@ -170,9 +223,17 @@
     function addInput(containerId, inputName) {
         const container = document.getElementById(containerId);
         const newInput = document.createElement("li");
-        newInput.innerHTML = `<input type="text" name="${inputName}">`;
-        
+
+        newInput.innerHTML = `
+            <input type="text" name="${inputName}">
+            <button type="button" class="delete-button" onclick="removeInput(this)">❌</button>
+        `;
+
         container.appendChild(newInput);
+    }
+
+    function removeInput(button) {
+        button.parentElement.remove();
     }
 </script>
 @endsection

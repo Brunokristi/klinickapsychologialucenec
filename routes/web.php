@@ -3,11 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Service;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\OutgoingController;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('home');
+    $dates = DB::table('dates')->get();
+    return view('home', compact('dates'));
 });
 
 Route::get('/about', function () {
@@ -18,15 +22,38 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/detail', function () {
-    return view('detail');
-});
+Route::get('/service/{id}', function ($id) {
+    $service = Service::with(['category', 'steps', 'necessities', 'files'])->findOrFail($id);
+    return view('detail', compact('service'));
+})->name('service.detail');
+
 
 Route::get('/products', function () {
-    return view('products');
-}); 
+    $categories = Category::with('services')->get();
+    return view('products', compact('categories'));
+});
 
+Route::get('/services/search', function (Request $request) {
+    $query = $request->get('q');
 
+    if (!$query) {
+        return redirect()->route('products'); // Redirect if no search term
+    }
+
+    // Normalize search query: remove punctuation, convert to lowercase
+    $normalizedQuery = strtolower(preg_replace('/[^\p{L}\p{N}\s]/u', '', $query));
+
+    // Fetch categories with services matching the normalized query
+    $categories = Category::with(['services' => function ($q) use ($normalizedQuery) {
+        $q->whereRaw("LOWER(REGEXP_REPLACE(name, '[[:punct:]]', '', 'g')) LIKE ?", ["%{$normalizedQuery}%"])
+          ->orWhereRaw("LOWER(REGEXP_REPLACE(description, '[[:punct:]]', '', 'g')) LIKE ?", ["%{$normalizedQuery}%"])
+          ->orWhereHas('tags', function ($q) use ($normalizedQuery) {
+              $q->whereRaw("LOWER(REGEXP_REPLACE(name, '[[:punct:]]', '', 'g')) LIKE ?", ["%{$normalizedQuery}%"]);
+          });
+    }])->get();
+
+    return view('products', compact('categories'));
+})->name('services.search');
 
 Route::get('/dashboard', function () {
     return view('dashboard', ['services' => Service::getAllNames()]);
@@ -39,6 +66,7 @@ Route::get('/create/service', [ServiceController::class, 'serviceTemplate'])->mi
 Route::post('/create/service', [ServiceController::class, 'create'])->middleware(['auth', 'verified'])->name('service.create');
 
 Route::delete('/delete/service/id/{id}', [ServiceController::class, 'delete'])->middleware(['auth', 'verified'])->name('service.delete');
+Route::post('/service/delete-file', [ServiceController::class, 'deleteFile'])->name('service.deleteFile');
 
 Route::get('/show/outgoings', [OutgoingController::class, 'show'])->middleware(['auth', 'verified'])->name('outgoings.show');
 Route::post('/create/outgoings', [OutgoingController::class, 'create'])->middleware(['auth', 'verified'])->name('outgoings.create');
